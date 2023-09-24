@@ -30,7 +30,7 @@ def main() :
 
 def predict_class(image) :
     with st.spinner('Loading Model...'):
-        classifier_model = keras.models.load_model(r'50epochs_maize_potato2.h5', compile = False)
+        classifier_model = keras.models.load_model(r'bharatnatyam10.h5', compile = False)
 
     shape = ((256,256,3))
     model = keras.Sequential([hub.KerasLayer(classifier_model, input_shape = shape)])     # ye bhi kaam kar raha he
@@ -38,7 +38,7 @@ def predict_class(image) :
     test_image = keras.preprocessing.image.img_to_array(test_image)
     test_image /= 255.0
     test_image = np.expand_dims(test_image, axis = 0)
-    class_name = ['Maize_Blight', 'Maize_Common_rust', 'Maize_Gray_leaf_spot','Maize_Healthy','Potato_early_blight','Potato_late_blight','Potato_healthy']
+    class_name = ['Ardhamandalam Augmented', 'Bramha Augmented', 'Garuda Augmented','Muzhumandi Augmented','Nagabandham Augmented','Nataraj Augmented','Prenkhana Augmented','Samapadam Augmented','Swastika Augmented']
 
     prediction = model.predict(test_image)
     confidence = round(100 * (np.max(prediction[0])), 2)
